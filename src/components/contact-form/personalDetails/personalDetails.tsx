@@ -44,25 +44,78 @@ const PersonalDetails: React.FC = () => {
                     <CustomFormField placeholder='Enter your states' label='STATES'/>
                     <CustomFormField placeholder='Enter your zip' label='ZIP'/>
                 </Row>
-                <Row>
-                    <Col xs={12}>
-                        <div className="mb-3">
-                            <Form.Group className="mb-4" controlId="">
-                                <Form.Label className="control-label mb-3">Enquiry in regards to:</Form.Label>
-                                <div className="d-grid gap-1">
-                                    <div className="d-flex gap-md-4 gap-2 mb-md-0 mb-4 align-items-center flex-wrap">
-                                        <label>Additional Services:</label>
-                                        {/* <ReactSelect className="react-select-2" styles={customStylesSelect} options={AdditionalServices} placeholder='Additional Services' /> */}
+                <Col xs={12}>
+                    <Form.Group className="mb-4" controlId="">
+                    <Row>
+                        <Col>
+                            <Form.Label className="control-label mb-3">Do you have Social Media Accounts?</Form.Label>
+                        </Col>
+                        <Col>
+                            <div className="d-flex gap-4">
+                                <Form.Check type="radio" aria-label="radio 1" label={'Yes'} />
+                                <Form.Check type="radio" aria-label="radio 2" label={'No'} />
+                            </div>
+                        </Col>
+                    </Row>
+                    
+                    <Row style={{paddingRight: '13px'}}>
+                        <Col
+                            md={{ span: 3, offset: 2 }}
+                        >
+                            <Form.Label className="control-label mb-3">If Yes which ones:</Form.Label>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md={{ span: 3, offset: 2 }}>
+                            <div className="d-grid gap-1">
+                                <Form.Check className="text-14" type="checkbox" label="Facebook/Meta" />
+                                <Form.Check className="text-14" type="checkbox" label="LinkedIn" />
+                                <Form.Check className="text-14" type="checkbox" label="Instagram" />
+                                <Form.Check className="text-14" type="checkbox" label="Tick Tok" />
+                                <Form.Check className="text-14" type="checkbox" label="YouTube" />
+                                <Form.Check className="text-14" type="checkbox" label="Twitter/X" />
+                            </div>
+                        </Col>
+                    </Row>
+            
+                    <Row>
+                        <Col xs={12}>
+                            <div className="mb-3">
+                                <Form.Group className="mb-4" controlId="">
+                                    <Form.Label className="control-label mb-3">How did you hear about us?   (If you can recall exactly where on Instagram, TikTok, etc., please specify using "other".)</Form.Label>
+                                    <Row>
+                                    <Col md={{ span: 3, offset: 2 }}>
+                                    <div className="d-grid gap-1">
+                                        <Form.Check className="text-14" type="checkbox" label="Word of mouth" />
+                                        <Form.Check className="text-14" type="checkbox" label="Facebook" />
+                                        <Form.Check className="text-14" type="checkbox" label="Twitter" />
+                                        <Form.Check className="text-14" type="checkbox" label="Reddit" />
+                                        <Form.Check className="text-14" type="checkbox" label="Other:" />
                                     </div>
-                                    <Form.Check className="text-14" type="checkbox" label="Technical" />
-                                    <Form.Check className="text-14" type="checkbox" label="General" />
-                                    <Form.Check className="text-14" type="checkbox" label="Payment" />
-                                </div>
-                            </Form.Group>
-                        </div>
-                    </Col>
-    
-                </Row>
+                                    </Col>
+                                    <Col>
+                                    <div className="d-grid gap-1">
+                                        <Form.Check className="text-14" type="checkbox" label="The Money Minimalists" />
+                                        <Form.Check className="text-14" type="checkbox" label="Instagram" />
+                                        <Form.Check className="text-14" type="checkbox" label="LinkedIn" />
+                                        <Form.Check className="text-14" type="checkbox" label="Nextdoor" />
+                                    </div>
+                                    </Col>
+                                    <Col>
+                                    <div className="d-grid gap-1">
+                                        <Form.Check className="text-14" type="checkbox" label="YouTube" />
+                                        <Form.Check className="text-14" type="checkbox" label="TikTok" />
+                                        <Form.Check className="text-14" type="checkbox" label="Craigslist" />
+                                        <Form.Check className="text-14" type="checkbox" label="Flyer" />
+                                    </div>
+                                    </Col>
+                                    </Row>
+                                </Form.Group>
+                            </div>
+                        </Col>
+                    </Row> 
+                    </Form.Group>
+                </Col>
             </div>
         </main>
     </>
