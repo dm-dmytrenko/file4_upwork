@@ -1,7 +1,40 @@
-.personal-det-container {
-    background: linear-gradient(to bottom, #D9D9D9, #737373);
-    min-height: 750px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.personal-detail-page {
+    .control-label {font-size: 12px; font-weight: 600; color: #445463; text-transform: uppercase; margin: 0 0 6px;}
+    .form-control-custom {
+        padding: 14px 15px;
+        font-size: 15px;
+        background-color: white;
+        filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.05));
+        border-color: #E5E9ED99;
+        border-radius: 10px;
+        box-shadow: none !important;
+        &::placeholder {
+        color: #98A8B7
+        }
+    }
+    padding: 40px 0; background: linear-gradient(to bottom, #D9D9D9, #737373);;
+
+    .row * {font-size: 12px !important;}
+    
+    .container-sm {max-width: 800px;}
+
+    .page-title {font-size: 30px; font-style: normal; font-weight: bold; line-height: 45px; letter-spacing: 0.2;}
+
+    .form-check {
+        label {color: #637381; font-size: 13px; font-weight: 400;}
+    }
+
+    textarea.form-control-custom {
+        min-height: 150px;resize: none;
+    }
+
+    .react-select-2 {
+        min-width: 250px;
+        .css-13qlugu-control,
+        .css-1jy94s1-control {filter: none !important; border-radius: 8px; border-color: #D0D5DD !important;}
+    }
+
+    @media screen and (max-width: 676px) {
+        .react-select-2 {width: 100%;}   
+    }
 }

@@ -19,4 +19,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.control-label {font-size: 12px; font-weight: 600; color: #445463; text-transform: uppercase; margin: 0 0 6px;}
+.form-control-custom {
+    padding: 14px 15px;
+    font-size: 15px;
+    background-color: white;
+    filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.05));
+    border-color: #E5E9ED99;
+    border-radius: 14px;
+    box-shadow: none !important;
+    &::placeholder {
+    color: #98A8B7
+    }
+}
   
