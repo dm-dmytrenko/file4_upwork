@@ -1,0 +1,30 @@
+.footer-container {
+    background-color: black;
+    color: white;
+    align-items: center;
+
+    p {
+        font-size: 20px;
+        font-weight: medium;
+        width: 40%;
+    }
+
+    .footer-top {
+        height: 500px;
+        padding: 100px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .footer-botom {
+        min-height: 50px;
+        padding-top: 10px;
+        display: flex;
+        justify-content: space-around;
+    
+        a {
+            color: white;
+        }
+    }
+
+}

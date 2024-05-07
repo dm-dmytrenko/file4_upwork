@@ -1,0 +1,51 @@
+.team-container {
+    background: linear-gradient(to bottom, #800020, #1A0007);
+    height: 750px;
+    display: flex;
+    padding: 8%;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+  }
+  
+  .text-side-right {
+    flex: 1;
+    font-size: 20px;
+    text-align: center;
+    font-weight: 700;
+
+    h1 {
+        font-family: var(--zoo-font);
+        font-size: 80px;
+        color: #F7A55C;
+        font-weight: normal;
+      }
+    
+    h2 {
+        font-size: 30px;
+    }
+    
+    h3 {
+        font-size: 25px;
+        font-weight: 800;
+        color: #DD6080;
+        opacity: 0.5;
+    }
+
+    a {
+        font-size: 30px;
+        color: #F49D60;
+    }
+  }
+
+
+  .image-side-left {
+    flex: 1;
+    padding-right: 20px;
+  }
+  
+  .image-side-left img {
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover; 
+  }
