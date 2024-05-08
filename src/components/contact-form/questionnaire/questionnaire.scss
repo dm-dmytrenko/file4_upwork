@@ -1,0 +1,22 @@
+.question-container {
+    width: 80% !important;
+    color: white;
+
+    .control-label {
+        color: white;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    p {
+        font-size: 20px;
+    }
+    a {
+        color: white;
+        p {
+            letter-spacing: 1.5px;
+            font-size: 15px;
+            font-weight: bold;
+        }
+    }
+}
