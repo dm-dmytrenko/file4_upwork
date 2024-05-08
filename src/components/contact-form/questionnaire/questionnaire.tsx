@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import {Col, Form, Row, Container} from "react-bootstrap";
 import CustomFormField from '../../../features/customTextField/custom-text-field';
 import GradientTextComponent from '../../../features/gradient-text/gradient-text';

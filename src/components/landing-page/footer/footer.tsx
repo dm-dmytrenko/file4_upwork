@@ -11,8 +11,7 @@ const Footer: React.FC = () => {
       </div>
       <GradientBox height='39px' />
       <div className='footer-botom'>
-        <p
-        >SOSX Inc. 2022 Terms and conditions apply. <a href='#'>Cookies Policy</a>.</p>
+        <p>SOSX Inc. 2022 Terms and conditions apply. <a href='#'>Cookies Policy</a>.</p>
       </div>
     </div>
   );
