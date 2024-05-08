@@ -1,0 +1,11 @@
+.status-indicator {
+  position: absolute;  // Allow absolute positioning within the status bar
+  transform: translate(-50%, -50%);  // Ensure the image is centered
+  height: 94px;  // Height of the status indicator
+  width: 3px;  // Width of the status indicator
+  border-radius: 17px;  // Rounded edges
+  background: transparent;
+  background-image: url('../../static/images/statusThumb.png');  // Correct image path
+  background-size: contain;  // Ensure the image fits within the indicator
+  background-position: center;  // Center the image within the indicator
+}

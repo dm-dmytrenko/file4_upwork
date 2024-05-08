@@ -19,4 +19,26 @@
             font-weight: bold;
         }
     }
+
+    .status-bar {
+        position: relative;  // Allow absolute positioning within
+        height: 100vh;  // Full viewport height
+        background-color: #676363;  // Base color for the status bar
+        width: 3px;  // Width of the status bar
+        border-radius: 17px;  // Rounded edges for smoother appearance
+      }
+      
+    .status-indicator {
+        position: absolute;
+        min-width: 25px;
+        height: 94px;  // Height of the status indicator
+        top: 0;  // Positioning will be updated dynamically
+        left: -10px;  // Start at the top-left corner
+        border-radius: 17px;  // Rounded edges
+        background-color: #676363;  // Color for the indicator
+        background-image: url('../../../static/images/statusThumb.png');  // Image in the center
+        background-position: center;  // Center the image
+        background-size: contain;  // Ensure the image fits within the indicator
+        background-repeat: no-repeat;  // Avoid repeating the image
+    }
 }

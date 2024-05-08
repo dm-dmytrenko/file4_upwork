@@ -1,14 +1,52 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 import {Col, Form, Row, Container} from "react-bootstrap";
 import CustomFormField from '../../../features/customTextField/custom-text-field';
 import GradientTextComponent from '../../../features/gradient-text/gradient-text';
 import QuestionCheckbox from '../../../features/questionCheckbox/question-checkbox';
+// import CustomScrollBar from '../../../features/customScrollBar/customScrollBar';
+// import StatusBar from '../../../features/statusBar/statusBar';
 import fecesImage from '../../../static/images/feces.png';
+import statusThumb from '../../../static/images/statusThumb.png';
 
 import './questionnaire.scss';
 
+
+const StatusBar: React.FC<{ scrollRef: React.RefObject<HTMLDivElement> }> = ({ scrollRef }) => {
+    const [indicatorPosition, setIndicatorPosition] = useState(0);
+  
+    const handleScroll = () => {
+      if (scrollRef.current) {
+        const { scrollTop, scrollHeight, clientHeight } = scrollRef.current;
+        const scrollableHeight = scrollHeight - clientHeight;
+        const position = (scrollTop / scrollableHeight) * 100;  // Calculate the scroll percentage
+        setIndicatorPosition(position);
+      }
+    };
+  
+    useEffect(() => {
+      const current = scrollRef.current;
+      if (current) {
+        current.addEventListener('scroll', handleScroll);  // Attach the scroll event
+        return () => current.removeEventListener('scroll', handleScroll);  // Cleanup on unmount
+      }
+    }, [scrollRef]);
+  
+    return (
+      <div className="status-bar">
+        <div
+          className="status-indicator"
+          style={{ top: `${indicatorPosition}%` }}  // Position the indicator based on scroll
+        >
+          {/* 266 */}
+        </div>
+      </div>
+    );
+  };
+
 const Questionnaire: React.FC = () => {
+    const contentRef = useRef<HTMLDivElement>(null); 
+
   return (
     <Container className='question-container'>
         <Row className="justify-content-md-center">
@@ -32,13 +70,12 @@ const Questionnaire: React.FC = () => {
         </Row>
         <Form>
             <Row>
-                <Col 
-                    md={3} 
-                    style={{ height: '100vh', backgroundColor: 'lightgray' }}
-                >
-                    <p>holder</p>
+                <Col sm md="3">
+                    <StatusBar scrollRef={contentRef} />
                 </Col>
                 <Col sm md="9">
+                <div ref={contentRef} style={{overflowY: 'auto' }}>
+                    <div style={{ height: '200vh' }}>
                     <Row>
                         <CustomFormField label="DOB" placeholder='Enter your DOB' xs={6} md={6} />
                         <CustomFormField label="AGE" placeholder='Enter your Age' xs={6} md={6} />
@@ -560,6 +597,8 @@ const Questionnaire: React.FC = () => {
                         />
                     </Row>
                     </Row>
+                    </div>
+                    </div>
                 </Col>
             </Row>
         </Form>
