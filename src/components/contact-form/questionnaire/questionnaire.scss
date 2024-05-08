@@ -2,7 +2,6 @@
     width: 80% !important;
     color: white;
     padding-bottom: 190px;
-    flex-grow: 1;
 
     .section-label {
         color: white;
@@ -21,6 +20,21 @@
             font-weight: bold;
         }
     }
+
+    .custom-scrollbar {
+        position: absolute;  // Required for absolute positioning of the status bar
+        height: 100%;  // Full height of the parent container
+        width: 10px;  // Example width of the custom scrollbar
+        background: rgba(200, 200, 200, 0.2);  // Background color for visibility
+      }
+      
+      /* Inner status bar that represents scroll position */
+      .status-bar {
+        position: absolute;  // Allows for flexible positioning
+        background: #7A0ECF;  // Example color for the status bar
+        border-radius: 5px;  // Rounded corners
+        width: 10px;  // Ensure it matches the width of the custom scrollbar
+      }
 
     // .status-bar {
     //     position: relative;  // Allow absolute positioning within

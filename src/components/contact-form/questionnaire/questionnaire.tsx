@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import {Col, Form, Row, Container} from "react-bootstrap";
 import CustomFormField from '../../../features/customTextField/custom-text-field';
 import GradientTextComponent from '../../../features/gradient-text/gradient-text';
 import QuestionCheckbox from '../../../features/questionCheckbox/question-checkbox';
-// import CustomScrollBar from '../../../features/customScrollBar/customScrollBar';
-// import StatusBar from '../../../features/statusBar/statusBar';
+import StatusBar from '../../../features/statusBar/statusBar';
 import fecesImage from '../../../static/images/feces.png';
 import statusThumb from '../../../static/images/statusThumb.png';
 import GradientBox from '../../../features/gradient-box/gradient-box';
@@ -46,6 +45,24 @@ import './questionnaire.scss';
 //   };
 
 const Questionnaire: React.FC = () => {
+    const [scrollPercentage, setScrollPercentage] = useState(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+        const scrollHeight = document.documentElement.scrollHeight;
+        const scrollTop = document.documentElement.scrollTop;
+        const clientHeight = document.documentElement.clientHeight;
+
+        const scrollableHeight = scrollHeight - clientHeight;
+        const percentage = (scrollTop / scrollableHeight) * 100;
+        setScrollPercentage(percentage);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
   return (
     <Container className='question-container'>
@@ -72,11 +89,20 @@ const Questionnaire: React.FC = () => {
             </div>
         </Row>
         <Form.Group>
-            <Row style={{overflowY: 'auto', marginTop:'56px'}}>
-                <Col sm md="2">
-                    {/* <StatusBar scrollRef={contentRef} /> */}
+            <Row style={{marginTop:'56px'}}>
+                <Col md={2} style={{ position: 'relative' }} className="d-flex flex-column justify-content-center align-items-center">
+                    <div className="custom-scrollbar">
+                        <div
+                        className="status-bar"
+                        style={{
+                            height: `${scrollPercentage}%`, // Set the height based on scroll position
+                            top: 0,
+                            width: '100%',
+                        }}
+                        />
+                    </div>
                 </Col>
-                <Col sm md="8">
+                <Col md={8}>
                 <div>
                     <Row>
                         <CustomFormField label="dob" placeholder='Enter your DOB' xs={6} md={6} className='control-label-white'/>

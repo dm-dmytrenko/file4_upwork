@@ -1,11 +1,9 @@
-.status-indicator {
-  position: absolute;  // Allow absolute positioning within the status bar
-  transform: translate(-50%, -50%);  // Ensure the image is centered
-  height: 94px;  // Height of the status indicator
-  width: 3px;  // Width of the status indicator
-  border-radius: 17px;  // Rounded edges
-  background: transparent;
-  background-image: url('../../static/images/statusThumb.png');  // Correct image path
-  background-size: contain;  // Ensure the image fits within the indicator
-  background-position: center;  // Center the image within the indicator
+.vertical-status-bar {
+  // position: relative;  // Required for proper positioning
+  margin-top: 150px;
+  min-height: 100px;  // Adjust to your desired height
+  width: 10px;  // Desired width for the bar
+  background: #7A0ECF;  // Example color
+  border-radius: 10px;  // Rounded corners
+
 }
