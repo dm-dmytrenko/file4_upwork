@@ -6,14 +6,17 @@ import {
 
 import ContactForm from "./pages/contact-form/contact-form";
 import SalesPage from "./pages/sales-page/sales-page";
+import ScrollToTop from "./features/scrollToTop/scrollToTop";
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path='/' element={<SalesPage />} />
-        <Route path='/contact' element={<ContactForm />} />
-      </Routes>
+      <ScrollToTop>
+        <Routes>
+          <Route path='/' element={<SalesPage />} />
+          <Route path='/contact' element={<ContactForm />} />
+        </Routes>
+      </ScrollToTop>
     </Router>
   );
 }
