@@ -4,47 +4,13 @@ import {Col, Form, Row, Container} from "react-bootstrap";
 import CustomFormField from '../../../features/customTextField/custom-text-field';
 import GradientTextComponent from '../../../features/gradient-text/gradient-text';
 import QuestionCheckbox from '../../../features/questionCheckbox/question-checkbox';
-import StatusBar from '../../../features/statusBar/statusBar';
 import fecesImage from '../../../static/images/feces.png';
-import statusThumb from '../../../static/images/statusThumb.png';
-import GradientBox from '../../../features/gradient-box/gradient-box';
+import scrollThumb from '../../../static/images/scroll-thumb.png';
 
 import './questionnaire.scss';
 
-
-// const StatusBar: React.FC<{ scrollRef: React.RefObject<HTMLDivElement> }> = ({ scrollRef }) => {
-//     const [indicatorPosition, setIndicatorPosition] = useState(0);
-  
-//     const handleScroll = () => {
-//       if (scrollRef.current) {
-//         const { scrollTop, scrollHeight, clientHeight } = scrollRef.current;
-//         const scrollableHeight = scrollHeight - clientHeight;
-//         const position = (scrollTop / scrollableHeight) * 100;  // Calculate the scroll percentage
-//         setIndicatorPosition(position);
-//       }
-//     };
-  
-//     useEffect(() => {
-//       const current = scrollRef.current;
-//       if (current) {
-//         current.addEventListener('scroll', handleScroll);  // Attach the scroll event
-//         return () => current.removeEventListener('scroll', handleScroll);  // Cleanup on unmount
-//       }
-//     }, [scrollRef]);
-  
-//     return (
-//       <div className="status-bar">
-//         <div
-//           className="status-indicator"
-//           style={{ top: `${indicatorPosition}%` }}  // Position the indicator based on scroll
-//         >
-//           {/* 266 */}
-//         </div>
-//       </div>
-//     );
-//   };
-
 const Questionnaire: React.FC = () => {
+    const startScrollTop = 2228;
     const [scrollPercentage, setScrollPercentage] = useState(0);
 
     useEffect(() => {
@@ -52,10 +18,19 @@ const Questionnaire: React.FC = () => {
         const scrollHeight = document.documentElement.scrollHeight;
         const scrollTop = document.documentElement.scrollTop;
         const clientHeight = document.documentElement.clientHeight;
+        console.log('scrollHeight = ', scrollHeight);
+        console.log('scrollTop = ', scrollTop);
+        console.log('clientHeight = ', clientHeight);
 
         const scrollableHeight = scrollHeight - clientHeight;
-        const percentage = (scrollTop / scrollableHeight) * 100;
-        setScrollPercentage(percentage);
+        let percentage = 0;
+        if (scrollTop > startScrollTop) {
+            const adjustedScrollTop = scrollTop - startScrollTop;
+            const adjustedScrollableHeight = scrollableHeight - startScrollTop;
+
+            percentage = (adjustedScrollTop / adjustedScrollableHeight) * 100;
+        }
+        setScrollPercentage(Math.min(100, Math.max(0, percentage)));
         };
 
         window.addEventListener('scroll', handleScroll);
@@ -91,16 +66,19 @@ const Questionnaire: React.FC = () => {
         <Form.Group>
             <Row style={{marginTop:'56px'}}>
                 <Col md={2} style={{ position: 'relative' }} className="d-flex flex-column justify-content-center align-items-center">
-                    <div className="custom-scrollbar">
-                        <div
+                <div className="custom-scrollbar">
+                    <img
                         className="status-bar"
+                        src={scrollThumb}
                         style={{
-                            height: `${scrollPercentage}%`, // Set the height based on scroll position
-                            top: 0,
+                            position: 'absolute',
+                            top: `${scrollPercentage}%`,
+                            marginLeft: '-18.5px',
+                            minWidth: '42.43px',
                             width: '100%',
                         }}
-                        />
-                    </div>
+                    />
+                </div>
                 </Col>
                 <Col md={8}>
                 <div>
