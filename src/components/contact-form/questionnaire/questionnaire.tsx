@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React from 'react';
 
 import {Col, Form, Row, Container} from "react-bootstrap";
 import CustomFormField from '../../../features/customTextField/custom-text-field';
@@ -8,84 +8,86 @@ import QuestionCheckbox from '../../../features/questionCheckbox/question-checkb
 // import StatusBar from '../../../features/statusBar/statusBar';
 import fecesImage from '../../../static/images/feces.png';
 import statusThumb from '../../../static/images/statusThumb.png';
+import GradientBox from '../../../features/gradient-box/gradient-box';
 
 import './questionnaire.scss';
 
 
-const StatusBar: React.FC<{ scrollRef: React.RefObject<HTMLDivElement> }> = ({ scrollRef }) => {
-    const [indicatorPosition, setIndicatorPosition] = useState(0);
+// const StatusBar: React.FC<{ scrollRef: React.RefObject<HTMLDivElement> }> = ({ scrollRef }) => {
+//     const [indicatorPosition, setIndicatorPosition] = useState(0);
   
-    const handleScroll = () => {
-      if (scrollRef.current) {
-        const { scrollTop, scrollHeight, clientHeight } = scrollRef.current;
-        const scrollableHeight = scrollHeight - clientHeight;
-        const position = (scrollTop / scrollableHeight) * 100;  // Calculate the scroll percentage
-        setIndicatorPosition(position);
-      }
-    };
+//     const handleScroll = () => {
+//       if (scrollRef.current) {
+//         const { scrollTop, scrollHeight, clientHeight } = scrollRef.current;
+//         const scrollableHeight = scrollHeight - clientHeight;
+//         const position = (scrollTop / scrollableHeight) * 100;  // Calculate the scroll percentage
+//         setIndicatorPosition(position);
+//       }
+//     };
   
-    useEffect(() => {
-      const current = scrollRef.current;
-      if (current) {
-        current.addEventListener('scroll', handleScroll);  // Attach the scroll event
-        return () => current.removeEventListener('scroll', handleScroll);  // Cleanup on unmount
-      }
-    }, [scrollRef]);
+//     useEffect(() => {
+//       const current = scrollRef.current;
+//       if (current) {
+//         current.addEventListener('scroll', handleScroll);  // Attach the scroll event
+//         return () => current.removeEventListener('scroll', handleScroll);  // Cleanup on unmount
+//       }
+//     }, [scrollRef]);
   
-    return (
-      <div className="status-bar">
-        <div
-          className="status-indicator"
-          style={{ top: `${indicatorPosition}%` }}  // Position the indicator based on scroll
-        >
-          {/* 266 */}
-        </div>
-      </div>
-    );
-  };
+//     return (
+//       <div className="status-bar">
+//         <div
+//           className="status-indicator"
+//           style={{ top: `${indicatorPosition}%` }}  // Position the indicator based on scroll
+//         >
+//           {/* 266 */}
+//         </div>
+//       </div>
+//     );
+//   };
 
 const Questionnaire: React.FC = () => {
-    const contentRef = useRef<HTMLDivElement>(null); 
 
   return (
     <Container className='question-container'>
-        <Row className="justify-content-md-center">
+        <Row 
+            className="justify-content-md-center"
+            style={{margin:'37px 0 37px 0'}}
+        >
             <Col md="auto">
                 <GradientTextComponent text="Questionnaire"/>
             </Col>
         </Row>
         <Row>
             <p>
-                IMPORTANT! This questionnaire's purpose is to gauge both your potential efficacy and safety as a stool donor. It is not in your best interest to be untruthful on this questionnaire. At best you would be an ineffective donor and would not be used after a few donations, or worse, you could seriously harm someone, which may result in legal action if it is determined that you lied.
+                <b>IMPORTANT!</b> This questionnaire's purpose is to gauge both your potential efficacy and safety as a stool donor. It is not in your best interest to be untruthful on this questionnaire. At best you would be an ineffective donor and would not be used after a few donations, or worse, you could seriously harm someone, which may result in legal action if it is determined that you lied.
             </p>
-            <div className="d-grid gap-1">
+            <div className="d-grid gap-1" style={{marginLeft:'5px'}}>
                 <Form.Check className="text-20" type="checkbox" label="I understand." />
             </div>
-            <p style={{paddingTop: '80px'}}>
+            <p style={{paddingTop: '40px'}}>
                 I certify that the foregoing is true, correct, and complete. And if I am selected I could be asked for medical reports to confirm my statements. I understand that the accuracy, truthfulness, and completeness of my answers is important for patient safety.
             </p>
-            <div className="d-grid gap-1">
+            <div className="d-grid gap-1" style={{marginLeft:'5px'}}>
                 <Form.Check className="text-20" type="checkbox" label="I do." />
             </div>
         </Row>
-        <Form>
-            <Row>
-                <Col sm md="3">
-                    <StatusBar scrollRef={contentRef} />
+        <Form.Group>
+            <Row style={{overflowY: 'auto', marginTop:'56px'}}>
+                <Col sm md="2">
+                    {/* <StatusBar scrollRef={contentRef} /> */}
                 </Col>
-                <Col sm md="9">
-                <div ref={contentRef} style={{overflowY: 'auto' }}>
-                    <div style={{ height: '200vh' }}>
+                <Col sm md="8">
+                <div>
                     <Row>
-                        <CustomFormField label="DOB" placeholder='Enter your DOB' xs={6} md={6} />
-                        <CustomFormField label="AGE" placeholder='Enter your Age' xs={6} md={6} />
+                        <CustomFormField label="dob" placeholder='Enter your DOB' xs={6} md={6} className='control-label-white'/>
+                        <CustomFormField label="age" placeholder='Enter your Age' xs={6} md={6} className='control-label-white'/>
                     </Row>
                     <Row>
-                        <CustomFormField label="HEIGHT" placeholder='Enter your height' xs={6} md={6} />
-                        <CustomFormField label="WEIGHT" placeholder='Enter your weight' xs={6} md={6} />
+                        <CustomFormField label="height" placeholder='Enter your height' xs={6} md={6} className='control-label-white'/>
+                        <CustomFormField label="height" placeholder='Enter your weight' xs={6} md={6} className='control-label-white'/>
                     </Row>
                     <Row>
-                        <Form.Label className="control-label mb-3">GENDER</Form.Label>
+                        <Form.Label className="control-label-white mb-3">gender</Form.Label>
                         <div 
                             className="d-flex gap-4"
                             style={{paddingLeft: '9%'}}
@@ -100,7 +102,8 @@ const Questionnaire: React.FC = () => {
                         <CustomFormField 
                             label="Body fat percentage" 
                             placeholder='Enter your body fat percentage' 
-                            xs={6} md={6} 
+                            xs={6} md={6}
+                            className='control-label-white'
                         />
                         <Col 
                             style={{
@@ -120,9 +123,9 @@ const Questionnaire: React.FC = () => {
                         />
                     </Row>  
                     <Row style={{marginTop:'20px'}}>
-                        <Form.Label className="control-label mb-3">What sport do you play?</Form.Label>
+                        <Form.Label className="control-label-white mb-3">What sport do you play?</Form.Label>
                         <Col xs md={6}>
-                           ` <Form.Control className="text-14" placeholder='write here.....'/>`
+                           <Form.Control className="text-14" placeholder='write here.....'/>
                         </Col>
                     </Row>
                     <Row>
@@ -151,12 +154,12 @@ const Questionnaire: React.FC = () => {
                     </Row>
                     <Row style={{marginTop:'20px'}}>
                         <Col>
-                            <Form.Label className="control-label mb-3">Were you breastfed?</Form.Label>
+                            <Form.Label className="control-label-white mb-3">Were you breastfed?</Form.Label>
                         </Col>
                         <Col md={{ span: 8, offset: 1}}>
                             <div className="d-flex gap-4">
-                                <Form.Check type="radio" aria-label="radio 1" label={'Yes'} />
-                                <Form.Check type="radio" aria-label="radio 2" label={'No'} />
+                                <Form.Check type="radio" name="radio-2" label={'Yes'} />
+                                <Form.Check type="radio" name="radio-2" label={'No'} />
                             </div>
                         </Col>
                     </Row>
@@ -598,10 +601,9 @@ const Questionnaire: React.FC = () => {
                     </Row>
                     </Row>
                     </div>
-                    </div>
                 </Col>
             </Row>
-        </Form>
+        </Form.Group>
     </Container>
     );
   };

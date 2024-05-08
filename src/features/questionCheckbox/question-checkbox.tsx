@@ -1,14 +1,16 @@
 import React from 'react';
 import { Col, Form } from 'react-bootstrap';
 
+import './question-checkbox.scss';
+
 interface QuestionCheckboxProps {
     listText: string;
     checkboxLabels?: string[];
   }
 
 const QuestionCheckbox: React.FC<QuestionCheckboxProps> = ({ listText, checkboxLabels=[] }) => (
-  <div style={{marginTop:'20px'}}>
-    <ul style={{ marginLeft: '-10px' }}>
+  <div className="question-checkox-container">
+    <ul>
       <li>{listText}</li>
     </ul>
 

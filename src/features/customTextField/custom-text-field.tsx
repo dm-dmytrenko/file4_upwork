@@ -6,12 +6,19 @@ interface CustomFormFieldProps {
     placeholder: string;
     md?: number;
     xs?: number;
+    className?: string;
   }
 
-const CustomFormField: React.FC<CustomFormFieldProps> = ({ label, placeholder, md = 6, xs = 12 }) => (
+const CustomFormField: React.FC<CustomFormFieldProps> = ({ 
+  label, 
+  placeholder, 
+  md = 6, 
+  xs = 12,
+  className = 'control-label' 
+}) => (
   <Col md={md} xs={xs}>
     <Form.Group className="mb-4" controlId="">
-      <Form.Label className="control-label">{label}</Form.Label>
+      <Form.Label className={className}>{label}</Form.Label>
       <Form.Control
         className="form-control-custom"
         type="text"
