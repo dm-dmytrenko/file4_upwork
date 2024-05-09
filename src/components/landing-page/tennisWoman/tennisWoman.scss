@@ -11,12 +11,13 @@
     h1 {
       font-size: 50px;
       font-weight: bold;
-      color: transparent;
+      color: #600018;
+      text-transform: capitalize;
       background: linear-gradient(91deg, #DD6080, #F7A55C);
+      background-size: 200% 200%;
       -webkit-background-clip: text;
       background-clip: text;
-      -webkit-text-stroke: 2px black;
-
+      -webkit-text-stroke: 8px transparent;
     }
     p {
       letter-spacing: 2px;
