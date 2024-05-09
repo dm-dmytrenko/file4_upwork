@@ -7,7 +7,7 @@ import './tennisWoman.scss'
 
 const TennisWoman: React.FC = () => {
     return (
-      <Container fluid className="tennis-container">  {/* Main container with gradient background */}
+      <Container fluid className="tennis-container">
         <Row 
           className="justify-content-md-center"
           style={{ minHeight: '800px', alignItems: 'center'}}
